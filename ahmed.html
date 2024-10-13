@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الكتب</title>
+    <link rel="stylesheet" href="ahmed.css">
+</head>
+
+<body>
+    <h1>إضافة كتاب جديد</h1>
+    <form id="bookForm">
+        <label for="title">عنوان الكتاب:</label>
+        <input type="text" id="title" required>
+
+        <label for="author">المؤلف:</label>
+        <input type="text" id="author" required>
+
+        <label for="publishedDate">تاريخ النشر:</label>
+        <input type="date" id="publishedDate" required>
+
+        <label for="availableCopies">عدد النسخ المتاحة:</label>
+        <input type="number" id="availableCopies" required>
+
+        <button type="submit">إضافة الكتاب</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script src="ahmed.js"></script>
+</body>
+
+</html>
