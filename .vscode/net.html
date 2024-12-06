@@ -5,39 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>إدارة الكتب</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        
-        input {
-            margin: 5px;
-            padding: 10px;
-            width: 200px;
-        }
-        
-        button {
-            padding: 10px;
-        }
-        
-        ul {
-            list-style-type: none;
-        }
-    </style>
+    <link rel="stylesheet" href="net.css">
 </head>
 
 <body>
     <h1>إدارة الكتب</h1>
-    <input type="text" id="bookTitle" placeholder="عنوان الكتاب" required>
-    <input type="text" id="bookAuthor" placeholder="اسم المؤلف" required>
-    <button onclick="addBook()">إضافة كتاب</button>
+
+    <form id="bookForm">
+        <input type="text" id="bookName" placeholder="اسم الكتاب" required>
+        <input type="text" id="authorName" placeholder="اسم المؤلف" required>
+        <input type="file" id="bookImage" accept="image/*" required>
+        <input type="number" id="bookPrice" placeholder="سعر الكتاب بالدينار" required>
+        <button type="submit">إضافة كتاب</button>
+    </form>
 
     <h2>قائمة الكتب</h2>
+    <h3>gg</h3>
     <ul id="bookList"></ul>
 
     <script src="net.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js%22%3E"></script>
 </body>
 
 </html>
