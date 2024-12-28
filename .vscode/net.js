@@ -1,52 +1,80 @@
-let editingIndex = -1;
-const bookList = [];
+const bookForm = document.getElementById('bookForm');
+const bookList = document.getElementById('bookList');
 
-document.getElementById('bookForm').addEventListener('submit', function(event) {
+let books = [];
+
+bookForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
     const bookName = document.getElementById('bookName').value;
-    const authorName = document.getElementById('authorName').value;
-    const bookImage = document.getElementById('bookImage').files[0];
-    const bookPrice = document.getElementById('bookPrice').value;
+    const author = document.getElementById('author').value;
+    const price = document.getElementById('price').value;
+    const description = document.getElementById('description').value;
+    const image = document.getElementById('image').files[0];
 
-    if (editingIndex === -1) {
-        // إضافة كتاب جديد
-        const book = { name: bookName, author: authorName, price: bookPrice };
-        bookList.push(book);
-    } else {
-        // تعديل الكتاب
-        bookList[editingIndex] = { name: bookName, author: authorName, price: bookPrice };
-        editingIndex = -1; // إعادة تعيين الفهرس
-    }
+    const book = {
+        name: bookName,
+        author: author,
+        price: price,
+        description: description,
+        image: URL.createObjectURL(image)
+    };
 
-    renderBookList();
-    document.getElementById('bookForm').reset();
+    books.push(book);
+    displayBooks();
+    bookForm.reset();
 });
 
-function renderBookList() {
-    const bookListElement = document.getElementById('bookList');
-    bookListElement.innerHTML = '';
+function displayBooks() {
+    bookList.innerHTML = '';
+    books.forEach((book, index) => {
 
-    bookList.forEach((book, index) => {
-        const bookItem = document.createElement('li');
-        bookItem.innerHTML = `
-            <strong>${book.name}</strong> - ${book.author} - ${book.price} دينار
-            <button class="edit-button" onclick="editBook(${index})">تعديل</button>
-            <button class="delete-button" onclick="deleteBook(${index})">حذف</button>
-        `;
-        bookListElement.appendChild(bookItem);
+        bookList.appendChild(bookToElement(book, index));
+
     });
 }
 
 function editBook(index) {
-    const book = bookList[index];
+    const book = books[index];
+
     document.getElementById('bookName').value = book.name;
-    document.getElementById('authorName').value = book.author;
-    document.getElementById('bookPrice').value = book.price;
-    editingIndex = index;
+    document.getElementById('author').value = book.author;
+    document.getElementById('price').value = book.price;
+    document.getElementById('description').value = book.description;
+
+    // حذف الكتاب القديم
+    deleteBook(index);
 }
 
 function deleteBook(index) {
-    bookList.splice(index, 1);
-    renderBookList();
+    books.splice(index, 1);
+    console.log(books);
+    displayBooks();
+}
+
+function bookToElement(book, index) {
+    let info = document.createElement("div");
+    let image = document.createElement("div");
+    let buttons = document.createElement("div");
+    info.classList.add("entryinfo");
+    image.classList.add("entryimage");
+    buttons.classList.add("entrybutton");
+    let li = document.createElement('li');
+    li.classList.add("bookentry");
+
+    info.innerHTML = `<strong> ${book.name} </strong><br><br>
+    مؤلف: ${book.author} <br><br>
+        سعر: ${book.price}
+    دينار <br><br>
+        وصف: ${book.description}`;
+    image.innerHTML = `<img src = "${book.image}"
+        alt = "${book.name}"
+        style = "width:100px;height:auto;">`;
+    buttons.innerHTML = `<button onclick = "editBook(${index})"> تعديل </button>  
+            <button onclick = "deleteBook(${index})"> حذف </button>`;
+    li.appendChild(info);
+    li.appendChild(image);
+    li.appendChild(buttons);
+    return li;
+
 }

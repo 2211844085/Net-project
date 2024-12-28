@@ -1,6 +1,23 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flexbox;
+}
+
+h1,
+h2 {
+    text-align: center;
 }
 
 form {
@@ -35,27 +52,20 @@ li {
     align-items: center;
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.edit-button,
-.delete-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 5px;
+.bookentry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
 }
 
-.edit-button:hover {
-    background-color: #0056b3;
+.entryimage {
+    grid-row: span 2;
 }
 
-.delete-button {
-    background-color: #dc3545;
-}
-
-.delete-button:hover {
-    background-color: #c82333;
+.entryinfo {
+    grid-column: 1, 1;
+    grid-row: 1, 1;
 }

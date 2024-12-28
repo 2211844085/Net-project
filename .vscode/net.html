@@ -8,20 +8,28 @@
     <link rel="stylesheet" href="net.css">
 </head>
 
+
 <body>
-    <h1>إدارة الكتب</h1>
+    <div class="container">
+        <h1>إضافة كتاب جديد</h1>
+        <form id="bookForm">
+            <input type="text" id="bookName" placeholder="اسم الكتاب" required>
+            <input type="text" id="author" placeholder="مؤلف الكتاب" required>
+            <input type="number" id="price" placeholder="سعر الكتاب" required>
+            <textarea id="description" placeholder="وصف الكتاب" required></textarea>
 
-    <form id="bookForm">
-        <input type="text" id="bookName" placeholder="اسم الكتاب" required>
-        <input type="text" id="authorName" placeholder="اسم المؤلف" required>
-        <input type="file" id="bookImage" accept="image/*" required>
-        <input type="number" id="bookPrice" placeholder="سعر الكتاب بالدينار" required>
-        <button type="submit">إضافة كتاب</button>
-    </form>
+            <input type="file" id="image" accept="image/*" required>
 
-    <h2>قائمة الكتب</h2>
-    <h3>gg</h3>
-    <ul id="bookList"></ul>
+            <button type="submit">إضافة الكتاب</button>
+        </form>
+
+        <h2>قائمة الكتب</h2>
+        <ul id="bookList" dir="rtl">
+
+
+            </li>
+        </ul>
+    </div>
 
     <script src="net.js"></script>
 </body>
